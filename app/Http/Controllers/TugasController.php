@@ -80,8 +80,11 @@ class TugasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tugas $tugas)
+    public function destroy($id)
     {
-        //
+        $tugas = Tugas::findOrFail($id);
+        $tugas->delete();
+
+        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil dihapus!');
     }
 }
