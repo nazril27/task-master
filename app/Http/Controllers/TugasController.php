@@ -30,7 +30,15 @@ class TugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'mata_kuliah' => 'required|string|max:255',
+            'judul_tugas' => 'required|string|max:255',
+            'deadline'    => 'required|date',
+        ]);
+
+        Tugas::create($request->all());
+
+        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil ditambahkan!');
     }
 
     /**
