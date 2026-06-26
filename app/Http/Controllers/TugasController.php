@@ -62,9 +62,19 @@ class TugasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tugas $tugas)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'mata_kuliah' => 'required|string|max:255',
+            'judul_tugas' => 'required|string|max:255',
+            'deadline'    => 'required|date',
+            'status'      => 'required|in:Belum Selesai,Selesai'
+        ]);
+
+        $tugas = Tugas::findOrFail($id);
+        $tugas->update($request->all());
+
+        return redirect()->route('tugas.index')->with('success', 'Tugas berhasil diperbarui!');
     }
 
     /**
