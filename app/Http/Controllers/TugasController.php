@@ -12,7 +12,9 @@ class TugasController extends Controller
      */
     public function index()
     {
-        //
+        $semuaTugas = Tugas::orderBy('deadline', 'asc')->get();
+
+        return view('tugas.index', compact('semuaTugas'));
     }
 
     /**
