@@ -22,7 +22,7 @@ class TugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('tugas.create');
     }
 
     /**
