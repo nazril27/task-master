@@ -52,9 +52,11 @@ class TugasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tugas $tugas)
+    public function edit($id)
     {
-        //
+        $tugas = Tugas::findOrFail($id);
+        
+        return view('tugas.edit', compact('tugas'));
     }
 
     /**
