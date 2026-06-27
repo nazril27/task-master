@@ -49,6 +49,9 @@
                 @endforelse
             </tbody>
         </table>
+        <div class="mt-3">
+            {{ $semuaTugas->links('pagination::bootstrap-5') }}
+        </div>
     </div>
 </div>
 @endsection
