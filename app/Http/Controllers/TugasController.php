@@ -10,10 +10,15 @@ class TugasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $semuaTugas = Tugas::orderBy('deadline', 'asc')->paginate(5);
+        $query = Tugas::orderBy('deadline', 'asc');
 
+        if ($request->has('cari')) {
+            $query->where('judul_tugas', 'like', '%' . $request->cari . '%');
+        }
+
+        $semuaTugas = $query->paginate(5);
         return view('tugas.index', compact('semuaTugas'));
     }
 

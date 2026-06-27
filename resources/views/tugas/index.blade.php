@@ -7,6 +7,10 @@
         <a href="{{ route('tugas.create') }}" class="btn btn-primary">+ Tambah Tugas</a>
     </div>
     <div class="card-body">
+        <form action="{{ route('tugas.index') }}" method="GET" class="mb-3 d-flex gap-2">
+            <input type="text" name="cari" class="form-control" placeholder="Cari judul tugas..." value="{{ request('cari') }}">
+            <button type="submit" class="btn btn-secondary">Cari</button>
+        </form>
         <table class="table table-bordered table-hover">
             <thead class="table-light">
                 <tr>
